@@ -1,3 +1,4 @@
+import { easeInOutQuartic } from "@/config/customAnimations";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -14,7 +15,7 @@ export const Container = styled.div`
     max-width: calc(100% - ${(props) => props.theme.sizes.sidebarWidth});
     min-height: 100vh;
 
-    transition: all 0.5s ease;
+    transition: all 0.5s ${easeInOutQuartic};
     margin-left: ${(props) => props.theme.sizes.sidebarWidth};
     padding: calc(${(props) => props.theme.sizes.navbarHeight} + 1rem) 1.5rem
       1rem;

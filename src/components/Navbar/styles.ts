@@ -1,3 +1,4 @@
+import { easeInOutQuartic } from "@/config/customAnimations";
 import styled from "styled-components";
 import { elementsIndex } from "../../config/theme";
 
@@ -11,7 +12,7 @@ export const Container = styled.div<INavbar>`
   position: fixed;
   right: 0;
   top: 0;
-  transition: width 0.5s ease;
+  transition: width 0.5s ${easeInOutQuartic};
   backdrop-filter: blur(3px);
 
   @media screen and (max-width: 1199px) {

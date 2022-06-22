@@ -3,7 +3,8 @@ import { lazy } from "react";
 export interface RouteConfig {
   element: React.FC<any>;
   isPrivate?: boolean;
-  path: string;
+  isIndex?: boolean;
+  path?: string;
   childrens?: Omit<RouteConfig, "isPrivate">[];
 }
 
@@ -11,14 +12,18 @@ export const dashboardPathPrefix = "/dashboard";
 
 const routes: RouteConfig[] = [
   {
-    path: "/",
+    isIndex: true,
     element: lazy(() => import("@/pages/Home")),
     isPrivate: false,
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element: lazy(() => import("@/pages/Dashboard")),
     childrens: [
+      {
+        isIndex: true,
+        element: lazy(() => import("@/pages/Panel")),
+      },
       {
         path: "panel",
         element: lazy(() => import("@/pages/Panel")),

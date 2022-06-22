@@ -1,3 +1,4 @@
+import { easeInOutQuartic } from "@/config/customAnimations";
 import styled from "styled-components";
 import { elementsIndex } from "../../config/theme";
 
@@ -41,7 +42,7 @@ export const Container = styled.div<ISidebar>`
     left: 0;
     top: 0;
     background-color: #454545;
-    transition: width 0.5s ease;
+    transition: width 0.5s ${easeInOutQuartic};
     z-index: ${elementsIndex.sidebar};
     color: #fff;
     display: flex;
@@ -101,7 +102,7 @@ export const Container = styled.div<ISidebar>`
               top: 0;
               left: -4px;
 
-              transition: left 0.1s ease-in-out;
+              transition: left 0.1s ${easeInOutQuartic};
             }
 
             &.--active {
@@ -161,6 +162,7 @@ export const Container = styled.div<ISidebar>`
           padding: 0 1rem;
           cursor: pointer;
           border-left: 4px solid ${(props) => props.theme.colors.graysScale[10]};
+          transition: background-color 0.3s;
 
           &.--link {
             /* border-left: 4px solid
@@ -279,7 +281,7 @@ export const Container = styled.div<ISidebar>`
           }
           svg {
             margin-right: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ${easeInOutQuartic};
           }
 
           &.active {
