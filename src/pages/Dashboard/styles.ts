@@ -28,8 +28,8 @@ export const Container = styled.div`
     }
 
     @media screen and (max-width: 1199px) {
-      margin-left: 0;
-      max-width: 100%;
+      margin-left: 60px;
+      max-width: calc(100% - 60px);
     }
     @media screen and (max-width: 576px) {
       padding: calc(${(props) => props.theme.sizes.navbarHeight} + 1rem) 0.75rem

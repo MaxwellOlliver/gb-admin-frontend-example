@@ -5,6 +5,7 @@ export interface SidebarSubCategory {
   id: string;
   title: string;
   childrens?: SidebarSubCategory[];
+  linkedTo?: string;
   path?: string;
   type: "accordion" | "link";
 }
@@ -23,31 +24,29 @@ export const sidebar: SidebarCategory[] = [
     title: "entregas",
     subCategories: [
       {
+        id: "link-panel",
+        title: "Painel",
+        type: "link",
+        path: "/panel",
+      },
+      {
         id: "subcategory-customers",
         title: "Clientes",
         type: "accordion",
         childrens: [
           {
             id: "subcategory-premium-customer",
-            path: "/new-customer",
-            title: "Cliente Premium",
-            type: "accordion",
-            childrens: [
-              {
-                id: "subcategory-customers-1",
-                title: "Clientes",
-                type: "link",
-                path: "user",
-              },
-            ],
+            path: "/user",
+            title: "Novo cliente",
+            type: "link",
           },
         ],
       },
       {
-        id: "subcategory-customers-1",
-        title: "Clientes",
+        id: "link-deliver",
+        title: "Motoristas",
         type: "link",
-        path: "user",
+        path: "/delivery",
       },
     ],
   },
@@ -60,7 +59,7 @@ export const sidebar: SidebarCategory[] = [
         id: "subcategory-customers",
         title: "Novo Produto",
         type: "link",
-        path: "products",
+        path: "/products",
       },
     ],
   },

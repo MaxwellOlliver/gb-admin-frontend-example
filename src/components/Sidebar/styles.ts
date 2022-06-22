@@ -16,7 +16,7 @@ export const Container = styled.div<ISidebar>`
     left: 0;
     top: 0;
     background-color: #0000001a;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
     z-index: ${elementsIndex.overlay};
     opacity: 0;
     visibility: hidden;
@@ -27,34 +27,20 @@ export const Container = styled.div<ISidebar>`
         opacity: 1;
       }
     }
-
-    ${(props) =>
-      props.forceFullscreen &&
-      `&.show {
-        visibility: visible;
-        opacity: 1;
-      }`}
   }
   .sidebar {
     width: ${(props) => props.theme.sizes.sidebarWidth};
+    max-width: ${(props) => props.theme.sizes.sidebarWidth};
     min-height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
-    background-color: #454545;
+
     transition: width 0.5s ${easeInOutQuartic};
     z-index: ${elementsIndex.sidebar};
     color: #fff;
     display: flex;
     overflow: hidden;
-
-    @media screen and (max-width: 1199px) {
-      width: 60px;
-    }
-
-    &.open {
-      width: ${(props) => props.theme.sizes.sidebarWidth};
-    }
 
     .sidebar__left-menu {
       width: 60px;
@@ -64,7 +50,19 @@ export const Container = styled.div<ISidebar>`
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
       padding: 1rem 0;
+      z-index: 2;
+
+      > svg {
+        display: none;
+        cursor: pointer;
+        transition: transform 0.3s ${easeInOutQuartic};
+
+        &.--is-open {
+          transform: rotate(-180deg);
+        }
+      }
 
       .left-menu__categories-wrapper {
         width: 100%;
@@ -124,10 +122,13 @@ export const Container = styled.div<ISidebar>`
     .sidebar__right-menu {
       display: flex;
       width: 100%;
+      min-width: calc(${(props) => props.theme.sizes.sidebarWidth} - 60px);
       height: 100vh;
       overflow: hidden auto;
       display: flex;
       flex-direction: column;
+      background-color: #454545;
+      transition: transform 0.5s ${easeInOutQuartic};
 
       .right-menu__active-category {
         width: 100%;
@@ -167,16 +168,29 @@ export const Container = styled.div<ISidebar>`
           align-items: center;
           padding: 0 1rem;
           cursor: pointer;
-          border-left: 4px solid ${(props) => props.theme.colors.graysScale[10]};
+
           transition: background-color 0.3s;
+          position: relative;
+
+          .subcategory__border {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: ${(props) => props.theme.colors.graysScale[10]};
+
+            transition: background-color 0.1s, left 0.1s ${easeInOutQuartic};
+          }
 
           &.--link {
-            /* border-left: 4px solid
-            ${(props) => props.theme.colors.graysScale[10]}; */
             &.--active {
               background-color: ${(props) => props.theme.colors.primary[50]};
-              border-left: 4px solid
-                ${(props) => props.theme.colors.primaryGreenBelt};
+
+              .subcategory__border {
+                background-color: ${(props) =>
+                  props.theme.colors.primaryGreenBelt};
+              }
 
               svg {
                 color: ${(props) => props.theme.colors.primaryGreenBelt};
@@ -186,9 +200,16 @@ export const Container = styled.div<ISidebar>`
 
           &.--subcategory {
             justify-content: space-between;
+            border: none;
 
             svg {
               transition: transform 0.3s;
+            }
+
+            &:not(.--active) {
+              .subcategory__border {
+                left: -4px;
+              }
             }
 
             &.--active {
@@ -203,110 +224,28 @@ export const Container = styled.div<ISidebar>`
       }
     }
 
-    .sidebar-options,
-    .tab-ul {
-      padding: 1rem;
+    @media screen and (max-width: 1199px) {
+      width: 60px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      list-style: none;
-      div {
-        width: 100%;
-      }
-      li {
-        width: 100%;
-        padding: 10px 1.5rem;
-        color: ${(props) => props.theme.colors.graysScale.gray};
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        background-color: #fff;
-        transition: all 0.3s;
-
-        &.logo {
-          padding: 0px 2rem;
-          margin-bottom: 2rem;
-
-          svg {
-            display: none;
-            margin-left: 10px;
-            cursor: pointer;
-          }
-
-          img {
-            width: 100%;
-          }
-
-          @media screen and (max-width: 1199px) {
-            display: flex;
-            justify-content: space-between;
-            padding: 0px 1rem;
-
-            img {
-              width: calc(100% - 18px - 20px);
-            }
-
-            svg {
-              display: block;
-            }
-          }
-        }
-
-        &.header {
-          color: #ccc;
-          padding: 0 0.75rem;
-          font-weight: 300;
-          margin-top: 1rem;
-          font-size: 14px;
-        }
-
-        &.link {
-          cursor: pointer;
-          &:not(.active):not(.logo):hover {
-            filter: brightness(0.9);
-          }
-          svg {
-            margin-right: 10px;
-          }
-
-          &.active {
-            color: #fff;
-            background-color: ${(props) => props.theme.colors.primary[900]};
-            box-shadow: 0px 0px 10px 0px
-              ${(props) => props.theme.colors.primary[900]};
-            cursor: default;
-          }
-        }
-
-        &.tab {
-          cursor: pointer;
-          &:not(.active):not(.logo):hover {
-            filter: brightness(0.9);
-          }
-          svg {
-            margin-right: 10px;
-            transition: transform 0.3s ${easeInOutQuartic};
-          }
-
-          &.active {
-            filter: brightness(0.9);
-
-            svg {
-              transform: rotate(90deg);
-            }
-          }
+      .sidebar__left-menu {
+        > svg {
+          display: inline-block;
         }
       }
 
-      .tab-ul {
-        width: 100%;
-        padding: 0;
+      .sidebar__right-menu {
+        pointer-events: none;
+        transform: translateX(-100%);
+      }
+    }
 
-        li:last-child {
-          margin-bottom: 0;
-        }
+    &.open {
+      width: 100%;
+      overflow: hidden;
+
+      .sidebar__right-menu {
+        pointer-events: all;
+        transform: translateX(0%);
       }
     }
   }

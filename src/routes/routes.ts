@@ -28,6 +28,14 @@ const routes: RouteConfig[] = [
         path: "panel",
         element: lazy(() => import("@/pages/Panel")),
       },
+      {
+        path: "user",
+        element: lazy(() => import("@/pages/User")),
+      },
+      {
+        path: "products",
+        element: lazy(() => import("@/pages/Products")),
+      },
     ],
   },
 ];

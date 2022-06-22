@@ -20,5 +20,8 @@ export const Container = styled.div<AvatarProps>`
 
   span {
     color: ${(props) => props.theme.colors.primary[900]};
+    font-size: 1rem;
+    font-family: "Metropolis", "sans-serif" !important;
+    font-weight: 600;
   }
 `;
