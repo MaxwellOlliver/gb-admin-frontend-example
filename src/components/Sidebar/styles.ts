@@ -153,6 +153,12 @@ export const Container = styled.div<ISidebar>`
         flex-direction: column;
         list-style: none;
 
+        .subcategory__accordion {
+          li {
+            padding-left: calc(1rem + 10px);
+          }
+        }
+
         li {
           height: 50px;
           width: 100%;

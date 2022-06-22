@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import useResize from "@/hooks/useResize";
 import { Container } from "./styles";
+import { classNames } from "@/utils/classNames";
 
 interface IAccordionProps {
   children: (ref: React.MutableRefObject<any>) => JSX.Element;
@@ -12,11 +13,12 @@ interface IAccordionProps {
 
 function Accordion({ children, isOpen, style }: IAccordionProps) {
   const [maxHeight, setMaxHeight] = useState("0px");
-  const content = useRef(null);
+  const content = useRef<HTMLElement>(null);
   const { width } = useResize();
 
   useEffect(() => {
     if (content.current) {
+      content.current.addEventListener("click", () => console.log("chamou"));
       const height = getComputedStyle(content.current).height;
       setMaxHeight(height);
     }
@@ -27,7 +29,9 @@ function Accordion({ children, isOpen, style }: IAccordionProps) {
 
   return (
     <Container
-      className="accordion-wrapper"
+      className={classNames("accordion-wrapper", {
+        "--animate": isOpen,
+      })}
       maxHeight={maxHeight}
       isOpen={isOpen}
       style={style}

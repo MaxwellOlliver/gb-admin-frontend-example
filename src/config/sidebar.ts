@@ -1,19 +1,15 @@
 import { IconType } from "react-icons";
 import { FiBox, FiTruck } from "react-icons/fi";
 
-interface SidebarLink {
+export interface SidebarSubCategory {
   id: string;
   title: string;
-  path: string;
+  childrens?: SidebarSubCategory[];
+  path?: string;
+  type: "accordion" | "link";
 }
 
-interface SidebarSubCategory {
-  id: string;
-  title: string;
-  links: SidebarLink[];
-}
-
-interface SidebarCategory {
+export interface SidebarCategory {
   id: string;
   title: string;
   icon: IconType;
@@ -29,24 +25,29 @@ export const sidebar: SidebarCategory[] = [
       {
         id: "subcategory-customers",
         title: "Clientes",
-        links: [
+        type: "accordion",
+        childrens: [
           {
-            id: "link-create-customer",
+            id: "subcategory-premium-customer",
             path: "/new-customer",
-            title: "Novo cliente",
+            title: "Cliente Premium",
+            type: "accordion",
+            childrens: [
+              {
+                id: "subcategory-customers-1",
+                title: "Clientes",
+                type: "link",
+                path: "user",
+              },
+            ],
           },
         ],
       },
       {
         id: "subcategory-customers-1",
         title: "Clientes",
-        links: [
-          {
-            id: "link-create-customer",
-            path: "/new-customer",
-            title: "Novo cliente",
-          },
-        ],
+        type: "link",
+        path: "user",
       },
     ],
   },
@@ -57,14 +58,9 @@ export const sidebar: SidebarCategory[] = [
     subCategories: [
       {
         id: "subcategory-customers",
-        title: "Clientes",
-        links: [
-          {
-            id: "link-create-customer",
-            path: "/new-customer",
-            title: "Novo cliente",
-          },
-        ],
+        title: "Novo Produto",
+        type: "link",
+        path: "products",
       },
     ],
   },

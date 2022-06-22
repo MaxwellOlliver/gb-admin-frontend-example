@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { sidebar as options, sidebar } from "@/config/sidebar";
+import { sidebar as options, sidebar, SidebarCategory } from "@/config/sidebar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { classNames } from "@/utils/classNames";
 import { dashboardPathPrefix } from "@/routes/routes";
@@ -58,6 +58,11 @@ export default function Sidebar(): JSX.Element {
     }
   }
 
+  function handleChangeActiveCategory(category: SidebarCategory) {
+    setSubCategoriesIsOpen({});
+    setActiveCategory(category);
+  }
+
   function renderSidebarCategories() {
     return sidebar.map((category) => (
       <li
@@ -65,7 +70,7 @@ export default function Sidebar(): JSX.Element {
         className={classNames({
           "--active": activeCategory.id === category.id,
         })}
-        onClick={() => setActiveCategory(category)}
+        onClick={() => handleChangeActiveCategory(category)}
       >
         <category.icon size={20} />
         <div className="category__border"></div>
@@ -78,25 +83,35 @@ export default function Sidebar(): JSX.Element {
       <>
         <li
           key={subCategory.id}
-          className={classNames("--subcategory", {
+          className={classNames({
+            "--subcategory": subCategory.type === "accordion",
+            "--link": subCategory.type === "link",
             "--active": subCategoriesIsOpen[subCategory.id],
           })}
-          onClick={() => toggleSubCategoriesIsOpen(subCategory.id)}
+          onClick={() =>
+            subCategory.type === "accordion" &&
+            toggleSubCategoriesIsOpen(subCategory.id)
+          }
         >
           <span>{subCategory.title}</span>
-          <FiChevronRight />
+          {subCategory.type === "accordion" && <FiChevronRight />}
         </li>
-        <Accordion isOpen={subCategoriesIsOpen[subCategory.id]}>
-          {(ref) => (
-            <ul className="subcategory__accordion" ref={ref}>
-              {subCategory.links.map((link) => (
-                <li key={link.id} className="--link">
-                  {link.title}
-                </li>
-              ))}
-            </ul>
+        {subCategory.type === "accordion" &&
+          subCategory.childrens &&
+          subCategory.childrens.length > 0 && (
+            <Accordion isOpen={subCategoriesIsOpen[subCategory.id]}>
+              {(ref) => (
+                <ul className="subcategory__accordion" ref={ref}>
+                  {/* {renderSidebarSubCategories(subCategory.childrens)} */}
+                  {subCategory.childrens?.map((subChildren) => (
+                    <li key={subChildren.id} className="--link">
+                      {subChildren.title}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Accordion>
           )}
-        </Accordion>
       </>
     ));
   }
