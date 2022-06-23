@@ -16,7 +16,7 @@ export default createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
+    width: 0.5rem;
     background-color: ${(props) => props.theme.colors.graysScale[100]};
   }
 
@@ -26,7 +26,7 @@ export default createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    width: 18px;
+    width: 1.125rem;
     background-clip: content-box;
     background-color: ${(props) => props.theme.colors.primaryGreenBelt};
   }

@@ -7,7 +7,7 @@ export interface SidebarSubCategory {
   childrens?: SidebarSubCategory[];
   linkedTo?: string;
   path?: string;
-  type: "accordion" | "link";
+  type: "accordion" | "link" | "hidden";
 }
 
 export interface SidebarCategory {
@@ -24,10 +24,10 @@ export const sidebar: SidebarCategory[] = [
     title: "entregas",
     subCategories: [
       {
-        id: "link-panel",
-        title: "Painel",
+        id: "link-components",
+        title: "Componentes",
         type: "link",
-        path: "/panel",
+        path: "/components",
       },
       {
         id: "subcategory-customers",

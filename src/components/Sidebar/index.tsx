@@ -159,63 +159,68 @@ export default function Sidebar(): JSX.Element {
   }
 
   function renderSidebarSubCategories() {
-    return activeCategory.subCategories.map((subCategory) => {
-      const isAccordion = subCategory.type === "accordion";
-      const isSubCategoryActive = isActive(subCategory);
+    return activeCategory.subCategories
+      .filter((subCategory) => subCategory.type !== "hidden")
+      .map((subCategory) => {
+        const isAccordion = subCategory.type === "accordion";
+        const isSubCategoryActive = isActive(subCategory);
 
-      return (
-        <>
-          <li
-            key={subCategory.id}
-            className={classNames({
-              "--subcategory": isAccordion,
-              "--link": subCategory.type === "link",
-              "--active": isSubCategoryActive,
-            })}
-            onClick={() => {
-              if (isAccordion) {
-                toggleSubCategoriesIsOpen(subCategory.id);
-              } else if (subCategory.path) {
-                dashboardNavigate(subCategory.path);
-              }
-            }}
-          >
-            <span>{subCategory.title}</span>
-            <div className="subcategory__border"></div>
-            {isAccordion && <FiChevronRight />}
-          </li>
-          {isAccordion &&
-            subCategory.childrens &&
-            subCategory.childrens.length > 0 && (
-              <Accordion isOpen={subCategoriesIsOpen[subCategory.id]}>
-                {(ref) => (
-                  <ul className="subcategory__accordion" ref={ref}>
-                    {/* {renderSidebarSubCategories(subCategory.childrens)} */}
-                    {subCategory.childrens?.map((subChildren) => {
-                      const isSubChildrenActive = isActive(subChildren);
-                      return (
-                        <li
-                          key={subChildren.id}
-                          className={classNames("--link", {
-                            "--active": isSubChildrenActive,
-                          })}
-                          onClick={() =>
-                            subChildren.path &&
-                            dashboardNavigate(subChildren.path)
-                          }
-                        >
-                          {subChildren.title}
-                          <div className="subcategory__border"></div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </Accordion>
-            )}
-        </>
-      );
-    });
+        return (
+          <>
+            <li
+              key={subCategory.id}
+              className={classNames({
+                "--subcategory": isAccordion,
+                "--link": subCategory.type === "link",
+                "--active": isSubCategoryActive,
+              })}
+              onClick={() => {
+                if (isAccordion) {
+                  toggleSubCategoriesIsOpen(subCategory.id);
+                } else if (subCategory.path) {
+                  dashboardNavigate(subCategory.path);
+                }
+              }}
+            >
+              <span>{subCategory.title}</span>
+              <div className="subcategory__border"></div>
+              {isAccordion && <FiChevronRight />}
+            </li>
+            {isAccordion &&
+              subCategory.childrens &&
+              subCategory.childrens.length > 0 && (
+                <Accordion
+                  isOpen={subCategoriesIsOpen[subCategory.id]}
+                  key={`accordion-${subCategory.id}`}
+                >
+                  {(ref) => (
+                    <ul className="subcategory__accordion" ref={ref}>
+                      {/* {renderSidebarSubCategories(subCategory.childrens)} */}
+                      {subCategory.childrens?.map((subChildren) => {
+                        const isSubChildrenActive = isActive(subChildren);
+                        return (
+                          <li
+                            key={subChildren.id}
+                            className={classNames("--link", {
+                              "--active": isSubChildrenActive,
+                            })}
+                            onClick={() =>
+                              subChildren.path &&
+                              dashboardNavigate(subChildren.path)
+                            }
+                          >
+                            {subChildren.title}
+                            <div className="subcategory__border"></div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </Accordion>
+              )}
+          </>
+        );
+      });
   }
 
   return (

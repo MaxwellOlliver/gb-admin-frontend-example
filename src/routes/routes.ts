@@ -4,6 +4,7 @@ export interface RouteConfig {
   element: React.FC<any>;
   isPrivate?: boolean;
   isIndex?: boolean;
+  useSuspenseLoader?: boolean;
   path?: string;
   childrens?: Omit<RouteConfig, "isPrivate">[];
 }
@@ -19,14 +20,15 @@ const routes: RouteConfig[] = [
   {
     path: "dashboard",
     element: lazy(() => import("@/pages/Dashboard")),
+    useSuspenseLoader: true,
     childrens: [
+      // {
+      //   isIndex: true,
+      //   element: lazy(() => import("@/pages/Panel")),
+      // },
       {
-        isIndex: true,
-        element: lazy(() => import("@/pages/Panel")),
-      },
-      {
-        path: "panel",
-        element: lazy(() => import("@/pages/Panel")),
+        path: "components",
+        element: lazy(() => import("@/pages/MyComponents")),
       },
       {
         path: "user",

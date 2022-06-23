@@ -1,3 +1,3 @@
 export default function Panel() {
-  return <h1>panel</h1>;
+  return <h1>Dashboard panel</h1>;
 }

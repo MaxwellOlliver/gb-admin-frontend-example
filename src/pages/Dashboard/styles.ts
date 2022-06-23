@@ -22,7 +22,7 @@ export const Container = styled.div`
 
     > div {
       width: 100%;
-      max-height: calc(
+      min-height: calc(
         100vh - ${(props) => props.theme.sizes.navbarHeight} - 2rem
       );
     }

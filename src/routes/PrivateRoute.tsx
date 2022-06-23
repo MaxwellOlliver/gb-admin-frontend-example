@@ -16,15 +16,6 @@ const PrivateRoute = ({
     );
   }
 
-  if (isAuth && !isPrivate) {
-    return (
-      <>
-        {loading && <h1>loading user</h1>}
-        <Navigate to="/dashboard" />;
-      </>
-    );
-  }
-
   return children;
 };
 
