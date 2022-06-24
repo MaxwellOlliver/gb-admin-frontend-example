@@ -98,6 +98,10 @@ export const Container = styled.div<INavbar>`
           align-items: flex-end;
           gap: 5px;
 
+          .text-column__username {
+            text-align: right;
+          }
+
           .text-column__position {
             color: ${(props) => `${props.theme.colors.primaryGreenBelt}80`};
           }

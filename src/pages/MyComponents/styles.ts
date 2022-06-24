@@ -1,3 +1,4 @@
+import { easeInOutQuartic } from "@/config/customAnimations";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -25,6 +26,14 @@ export const Container = styled.div`
     & > * {
       margin-right: 1rem;
       margin-bottom: 1rem;
+    }
+
+    .table__edit-toggle {
+      transition: transform 0.3s ${easeInOutQuartic};
+
+      &.--active {
+        transform: rotate(-180deg);
+      }
     }
   }
 `;

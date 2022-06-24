@@ -1,11 +1,7 @@
 import { useState } from "react";
 
-type UseDisclosureProps = {
-  initAsTrue?: boolean;
-};
-
-function useDisclosure({ initAsTrue }: UseDisclosureProps) {
-  const [isOpen, setIsOpen] = useState(!!initAsTrue);
+function useDisclosure() {
+  const [isOpen, setIsOpen] = useState(false);
 
   function close() {
     isOpen && setIsOpen(false);

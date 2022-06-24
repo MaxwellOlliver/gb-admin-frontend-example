@@ -17,7 +17,8 @@ export default createGlobalStyle`
 
   *::-webkit-scrollbar {
     width: 0.5rem;
-    background-color: ${(props) => props.theme.colors.graysScale[100]};
+    height: 0.5rem;
+    background-color: ${(props) => props.theme.colors.graysScale[200]};
   }
 
   *::-webkit-scrollbar-track {

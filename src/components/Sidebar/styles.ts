@@ -203,7 +203,7 @@ export const Container = styled.div<ISidebar>`
             border: none;
 
             svg {
-              transition: transform 0.3s;
+              transition: transform 0.3s ${easeInOutQuartic};
             }
 
             &:not(.--active) {

@@ -1,10 +1,41 @@
 import Button from "@/@core/components/Button";
 import Input from "@/@core/components/Input";
+import {
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@/@core/components/Table";
 import animatePresence from "@/components/AnimatePresence";
-import { FiAlertCircle, FiAlertTriangle, FiHome, FiPlus } from "react-icons/fi";
+import { classNames } from "@/utils/classNames";
+import { Fragment, useState } from "react";
+import {
+  FiAlertCircle,
+  FiAlertTriangle,
+  FiChevronDown,
+  FiEdit,
+  FiHome,
+  FiPenTool,
+  FiPlus,
+} from "react-icons/fi";
 import { Container } from "./styles";
 
 function MyComponents() {
+  const [accordionIsOpen, setAccordionIsOpen] = useState<Record<any, boolean>>(
+    {}
+  );
+
+  const toggleAccordion = (id: number) => {
+    if (accordionIsOpen[id]) {
+      setAccordionIsOpen((state) => ({ ...state, [id]: false }));
+    } else {
+      setAccordionIsOpen((state) => ({ ...state, [id]: true }));
+    }
+  };
+
   return (
     <Container>
       <h2>Buttons (solid)</h2>
@@ -76,6 +107,75 @@ function MyComponents() {
           rightIcon={FiHome}
           leftIcon={FiHome}
         />
+      </div>
+      <h2>Table primary</h2>
+      <div className="custom-component">
+        <TableContainer>
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Coluna 1</Th>
+                <Th>Coluna 2</Th>
+                <Th>Coluna 3</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {new Array(5).fill("").map((_, index) => (
+                <Tr key={index}>
+                  <Td>motorista</Td>
+                  <Td>motorista</Td>
+                  <Td>Lorem Ipsum</Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
+      </div>
+      <h2>Table secondary (with edit accordion)</h2>
+      <div className="custom-component">
+        <TableContainer>
+          <Table secondary>
+            <Thead>
+              <Tr>
+                <Th>Coluna 1</Th>
+                <Th>Coluna 2</Th>
+                <Th>Coluna 3</Th>
+                <Th actions>ações</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {new Array(5).fill("").map((_, index) => (
+                <Fragment key={index}>
+                  <Tr isActive={accordionIsOpen[index]}>
+                    <Td>motorista</Td>
+                    <Td>motorista</Td>
+                    <Td>Lorem Ipsum</Td>
+                    <Td actions>
+                      <FiChevronDown
+                        size={20}
+                        onClick={() => toggleAccordion(index)}
+                        className={classNames("table__edit-toggle", {
+                          "--active": accordionIsOpen[index],
+                        })}
+                      />
+                    </Td>
+                  </Tr>
+                  <Tr
+                    columnCount={4}
+                    accordionRow
+                    accordionIsOpen={accordionIsOpen[index]}
+                  >
+                    <Input
+                      placeholder="Default input"
+                      labelText="Left icon"
+                      leftIcon={FiEdit}
+                    />
+                  </Tr>
+                </Fragment>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
       </div>
     </Container>
   );

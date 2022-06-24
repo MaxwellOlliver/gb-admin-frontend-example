@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { dashboardPathPrefix } from "@/routes/routes";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
 
 import { sidebar, SidebarCategory, SidebarSubCategory } from "@/config/sidebar";
@@ -166,9 +166,8 @@ export default function Sidebar(): JSX.Element {
         const isSubCategoryActive = isActive(subCategory);
 
         return (
-          <>
+          <Fragment key={subCategory.id}>
             <li
-              key={subCategory.id}
               className={classNames({
                 "--subcategory": isAccordion,
                 "--link": subCategory.type === "link",
@@ -218,7 +217,7 @@ export default function Sidebar(): JSX.Element {
                   )}
                 </Accordion>
               )}
-          </>
+          </Fragment>
         );
       });
   }
