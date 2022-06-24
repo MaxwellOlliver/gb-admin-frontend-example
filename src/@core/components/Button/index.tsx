@@ -1,11 +1,11 @@
-import React from "react";
-import { IconType } from "react-icons";
+import React from 'react';
+import {IconType} from 'react-icons';
 
-import { Container } from "./styles";
+import {Container} from './styles';
 
 interface IButtonProps {
-  variant?: "solid" | "outline";
-  color?: "primary" | "secondary" | "warn" | "error";
+  variant?: 'solid' | 'outline';
+  color?: 'primary' | 'secondary' | 'warn' | 'error';
   shadow?: boolean;
   rounded?: boolean;
   lg?: boolean;
@@ -13,8 +13,8 @@ interface IButtonProps {
 }
 
 export default function Button({
-  variant = "solid",
-  color = "primary",
+  variant = 'solid',
+  color = 'primary',
   shadow,
   rounded,
   children,
@@ -22,8 +22,8 @@ export default function Button({
   icon: Icon,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & IButtonProps): JSX.Element {
-  if (variant === "outline" && color === "secondary") {
-    variant = "solid";
+  if (variant === 'outline' && color === 'secondary') {
+    variant = 'solid';
   }
 
   return (

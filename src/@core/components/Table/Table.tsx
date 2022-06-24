@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { classNames } from "@/utils/classNames";
-import { forwardRef, PropsWithChildren } from "react";
+import {forwardRef, PropsWithChildren} from 'react';
+import {classNames} from '@/utils/classNames';
+import styled from 'styled-components';
 
 const Container = styled.table`
   width: 100%;
@@ -22,11 +22,11 @@ interface ITableProps extends React.TableHTMLAttributes<HTMLTableElement> {
 }
 
 const Table = forwardRef<HTMLTableElement, PropsWithChildren<ITableProps>>(
-  function Table({ children, secondary, ...props }, ref) {
+  function Table({children, secondary, ...props}, ref) {
     return (
       <Container
         className={classNames({
-          "--secondary": secondary,
+          '--secondary': secondary,
         })}
         {...props}
         ref={ref}
@@ -34,7 +34,7 @@ const Table = forwardRef<HTMLTableElement, PropsWithChildren<ITableProps>>(
         {children}
       </Container>
     );
-  }
+  },
 );
 
 export default Table;

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { classNames } from "@/utils/classNames";
+import {classNames} from '@/utils/classNames';
+import styled from 'styled-components';
 
 const Container = styled.th`
   background-color: #1b4949;
@@ -38,11 +38,11 @@ interface ThProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   actions?: boolean;
 }
 
-export default function Th({ children, actions, ...props }: ThProps) {
+export default function Th({children, actions, ...props}: ThProps) {
   return (
     <Container
       className={classNames({
-        "--actions": actions,
+        '--actions': actions,
       })}
       {...props}
     >

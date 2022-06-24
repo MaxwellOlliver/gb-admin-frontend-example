@@ -1,7 +1,7 @@
-import { classNames } from "@/utils/classNames";
-import styled from "styled-components";
-import Accordion from "../Accordion";
-import Td from "./Td";
+import {classNames} from '@/utils/classNames';
+import styled from 'styled-components';
+import Td from './Td';
+import Accordion from '../Accordion';
 
 const Container = styled.tr`
   word-wrap: break-word;
@@ -35,16 +35,16 @@ export default function Tr({
   return (
     <Container
       className={classNames({
-        "--accordion-mode": accordionRow,
-        "--active": isActive,
+        '--accordion-mode': accordionRow,
+        '--active': isActive,
       })}
       {...props}
     >
       {accordionRow ? (
-        <Td colSpan={columnCount} style={{ padding: 0 }}>
+        <Td colSpan={columnCount} style={{padding: 0}}>
           <Accordion isOpen={!!accordionIsOpen}>
             {(ref) => (
-              <div ref={ref} style={{ width: "100%", padding: "2rem" }}>
+              <div ref={ref} style={{width: '100%', padding: '2rem'}}>
                 {children}
               </div>
             )}

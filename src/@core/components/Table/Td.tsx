@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { classNames } from "@/utils/classNames";
+import {classNames} from '@/utils/classNames';
+import styled from 'styled-components';
 
 const Container = styled.td`
   padding-inline-start: 1.5rem;
@@ -32,11 +32,11 @@ interface ITdProps extends React.TdHTMLAttributes<HTMLTableDataCellElement> {
   actions?: boolean;
 }
 
-export default function Td({ children, actions, ...props }: ITdProps) {
+export default function Td({children, actions, ...props}: ITdProps) {
   return (
     <Container
       className={classNames({
-        "--actions": actions,
+        '--actions': actions,
       })}
       {...props}
     >

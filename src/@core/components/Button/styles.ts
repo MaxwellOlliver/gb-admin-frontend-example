@@ -1,23 +1,23 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface IBtnContainerProps {
-  variant: "solid" | "outline";
-  color: "primary" | "secondary" | "alert" | "error" | string;
+  variant: 'solid' | 'outline';
+  color: 'primary' | 'secondary' | 'alert' | 'error' | string;
   shadow?: boolean;
   rounded?: boolean;
   lg?: boolean;
 }
 
 enum btnVariants {
-  SOLID = "solid",
-  OUTLINE = "outline",
+  SOLID = 'solid',
+  OUTLINE = 'outline',
 }
 
 enum btnColors {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  WARN = "warn",
-  ERROR = "error",
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  WARN = 'warn',
+  ERROR = 'error',
 }
 
 export const Container = styled.button<IBtnContainerProps>`
@@ -26,14 +26,14 @@ export const Container = styled.button<IBtnContainerProps>`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  padding: ${(props) => (props.lg ? "1.5rem 1.7rem" : "0 1.3rem")};
+  padding: ${(props) => (props.lg ? '1.5rem 1.7rem' : '0 1.3rem')};
   cursor: pointer;
   transition: all 0.3s;
 
   &:disabled {
     cursor: default;
     ${(props) =>
-      props.variant === "solid"
+      props.variant === 'solid'
         ? `
             background-color: ${props.theme.colors.graysScale[200]} !important;
             color: ${props.theme.colors.graysScale[400]} !important;
@@ -62,7 +62,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.alert};`
-                : "none;"
+                : 'none;'
             }
 
             &:hover {
@@ -77,7 +77,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.alertDark};`
-                : "none;"
+                : 'none;'
             }
 
             &:hover {
@@ -92,7 +92,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.success};`
-                : "none;"
+                : 'none;'
             }
 
             &:hover {
@@ -122,7 +122,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.alert};`
-                : "none;"
+                : 'none;'
             }
             &:hover {
               background-color: ${props.theme.colors.feedBack.alert};
@@ -138,7 +138,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.success};`
-                : "none;"
+                : 'none;'
             }
 
             &:hover {
@@ -155,7 +155,7 @@ export const Container = styled.button<IBtnContainerProps>`
             box-shadow: ${
               props.shadow
                 ? `0px 0px 15px 0px ${props.theme.colors.feedBack.alertDark};`
-                : "none;"
+                : 'none;'
             }
 
             &:hover {

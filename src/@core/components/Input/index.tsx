@@ -1,8 +1,8 @@
-import { classNames } from "@/utils/classNames";
-import { forwardRef, HTMLProps, useRef, useState } from "react";
-import { IconType } from "react-icons";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Container } from "./styles";
+import {forwardRef, HTMLProps, useRef, useState} from 'react';
+import {IconType} from 'react-icons';
+import {FiEye, FiEyeOff} from 'react-icons/fi';
+import {classNames} from '@/utils/classNames';
+import {Container} from './styles';
 
 interface ICustomInputProps extends HTMLProps<HTMLInputElement> {
   labelText?: string;
@@ -11,17 +11,17 @@ interface ICustomInputProps extends HTMLProps<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, ICustomInputProps>(function Input(
-  { labelText, leftIcon: LeftIcon, rightIcon: RightIcon, ...props },
-  ref
+  {labelText, leftIcon: LeftIcon, rightIcon: RightIcon, ...props},
+  ref,
 ): JSX.Element {
-  const [inputType, setInputType] = useState(props.type || "text");
+  const [inputType, setInputType] = useState(props.type || 'text');
   const cacheInputType = useRef<string>(props.type as string);
 
   const toggleInputType = () => {
-    if (inputType === "password") {
-      setInputType("text");
+    if (inputType === 'password') {
+      setInputType('text');
     } else if (cacheInputType) {
-      setInputType("password");
+      setInputType('password');
     }
   };
 
@@ -39,27 +39,27 @@ const Input = forwardRef<HTMLInputElement, ICustomInputProps>(function Input(
           type={inputType}
           ref={ref}
           onKeyDown={(e) => {
-            props.type === "number" && handlePreventTypeLetters(e);
+            props.type === 'number' && handlePreventTypeLetters(e);
             props.onKeyDown && props.onKeyDown(e);
           }}
           onKeyUp={(e) => {
-            props.type === "number" && handlePreventTypeLetters(e);
+            props.type === 'number' && handlePreventTypeLetters(e);
             props.onKeyUp && props.onKeyUp(e);
           }}
           onKeyPress={(e) => {
-            props.type === "number" && handlePreventTypeLetters(e);
+            props.type === 'number' && handlePreventTypeLetters(e);
             props.onKeyPress && props.onKeyPress(e);
           }}
         />
         {RightIcon && <RightIcon />}
 
-        {cacheInputType.current === "password" && (
+        {cacheInputType.current === 'password' && (
           <div
-            className={classNames("wrapper__visible-toggle", {
-              "--right-icon": !!RightIcon,
+            className={classNames('wrapper__visible-toggle', {
+              '--right-icon': !!RightIcon,
             })}
           >
-            {inputType === "password" ? (
+            {inputType === 'password' ? (
               <FiEye size={16} onClick={toggleInputType} />
             ) : (
               <FiEyeOff size={16} onClick={toggleInputType} />

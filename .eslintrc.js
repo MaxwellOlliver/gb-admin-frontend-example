@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'google',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime',
     'plugin:import/recommended',
@@ -27,7 +28,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'no-use-before-define': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
     'no-explicit-any': 'off',
     'require-jsdoc': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],

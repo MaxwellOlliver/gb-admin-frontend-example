@@ -1,5 +1,5 @@
-import { easeInOutQuartic } from "@/config/customAnimations";
-import styled from "styled-components";
+import {easeInOutQuartic} from '@/config/customAnimations';
+import styled from 'styled-components';
 
 interface IAccordionProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ export const Container = styled.div<IAccordionProps>`
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   transition: opacity 0.3s, height 0.3s ${easeInOutQuartic};
 
-  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
+  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
 
   //overflow: hidden;
 `;

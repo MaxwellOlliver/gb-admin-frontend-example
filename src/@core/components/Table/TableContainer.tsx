@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: block;
@@ -12,6 +12,6 @@ interface ITableContainerProps {
   children?: React.ReactNode;
 }
 
-export default function TableContainer({ children }: ITableContainerProps) {
+export default function TableContainer({children}: ITableContainerProps) {
   return <Container>{children}</Container>;
 }

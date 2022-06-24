@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.tbody`
   > tr {
@@ -16,6 +16,6 @@ interface ITbodyProps
   children?: React.ReactNode;
 }
 
-export default function Tbody({ children, ...props }: ITbodyProps) {
+export default function Tbody({children, ...props}: ITbodyProps) {
   return <Container {...props}>{children}</Container>;
 }

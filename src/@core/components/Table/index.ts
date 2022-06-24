@@ -1,9 +1,9 @@
-import Table from "./Table";
-import TableContainer from "./TableContainer";
-import Thead from "./Thead";
-import Tbody from "./Tbody";
-import Td from "./Td";
-import Tr from "./Tr";
-import Th from "./Th";
+import Table from './Table';
+import TableContainer from './TableContainer';
+import Tbody from './Tbody';
+import Td from './Td';
+import Th from './Th';
+import Thead from './Thead';
+import Tr from './Tr';
 
-export { TableContainer, Table, Thead, Tbody, Td, Tr, Th };
+export {TableContainer, Table, Thead, Tbody, Td, Tr, Th};
