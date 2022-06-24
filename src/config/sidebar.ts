@@ -1,5 +1,5 @@
-import { IconType } from "react-icons";
-import { FiBox, FiTruck } from "react-icons/fi";
+import {IconType} from 'react-icons';
+import {FiBox, FiTruck} from 'react-icons/fi';
 
 export interface SidebarSubCategory {
   id: string;
@@ -7,7 +7,7 @@ export interface SidebarSubCategory {
   childrens?: SidebarSubCategory[];
   linkedTo?: string;
   path?: string;
-  type: "accordion" | "link" | "hidden";
+  type: 'accordion' | 'link' | 'hidden';
 }
 
 export interface SidebarCategory {
@@ -19,47 +19,47 @@ export interface SidebarCategory {
 
 export const sidebar: SidebarCategory[] = [
   {
-    id: "category-delivery",
+    id: 'category-delivery',
     icon: FiTruck,
-    title: "entregas",
+    title: 'entregas',
     subCategories: [
       {
-        id: "link-components",
-        title: "Componentes",
-        type: "link",
-        path: "/components",
+        id: 'link-components',
+        title: 'Componentes',
+        type: 'link',
+        path: '/components',
       },
       {
-        id: "subcategory-customers",
-        title: "Clientes",
-        type: "accordion",
+        id: 'subcategory-customers',
+        title: 'Clientes',
+        type: 'accordion',
         childrens: [
           {
-            id: "subcategory-premium-customer",
-            path: "/user",
-            title: "Novo cliente",
-            type: "link",
+            id: 'subcategory-premium-customer',
+            path: '/user',
+            title: 'Novo cliente',
+            type: 'link',
           },
         ],
       },
       {
-        id: "link-deliver",
-        title: "Motoristas",
-        type: "link",
-        path: "/delivery",
+        id: 'link-deliver',
+        title: 'Motoristas',
+        type: 'link',
+        path: '/delivery',
       },
     ],
   },
   {
-    id: "category-products",
+    id: 'category-products',
     icon: FiBox,
-    title: "produtos",
+    title: 'produtos',
     subCategories: [
       {
-        id: "subcategory-customers",
-        title: "Novo Produto",
-        type: "link",
-        path: "/products",
+        id: 'subcategory-customers',
+        title: 'Novo Produto',
+        type: 'link',
+        path: '/products',
       },
     ],
   },

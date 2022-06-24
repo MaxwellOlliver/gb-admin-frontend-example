@@ -1,5 +1,5 @@
-import { Container } from "./styles";
-import { theme } from "@/config/theme";
+import {theme} from '@/config/theme';
+import {Container} from './styles';
 
 export default function SuspenseLoader() {
   return (

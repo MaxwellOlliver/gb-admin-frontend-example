@@ -1,16 +1,16 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { dashboardPathPrefix } from "@/routes/routes";
-import { Fragment, useEffect, useState } from "react";
-import { FiChevronRight } from "react-icons/fi";
+import {Fragment, useEffect, useState} from 'react';
+import {FiChevronRight} from 'react-icons/fi';
+import {useLocation, useNavigate} from 'react-router-dom';
 
-import { sidebar, SidebarCategory, SidebarSubCategory } from "@/config/sidebar";
-import { classNames } from "@/utils/classNames";
-import Accordion from "@/@core/components/Accordion";
-import useSidebar from "@/hooks/useSidebar";
-import { Container } from "./styles";
+import Accordion from '@/@core/components/Accordion';
 
-import { ReactComponent as Logo } from "@/assets/logo-small.svg";
-import { ReactComponent as SidebarToggle } from "@/assets/open-side.svg";
+import {ReactComponent as Logo} from '@/assets/logo-small.svg';
+import {ReactComponent as SidebarToggle} from '@/assets/open-side.svg';
+import {sidebar, SidebarCategory, SidebarSubCategory} from '@/config/sidebar';
+import useSidebar from '@/hooks/useSidebar';
+import {dashboardPathPrefix} from '@/routes/routes';
+import {classNames} from '@/utils/classNames';
+import {Container} from './styles';
 
 export default function Sidebar(): JSX.Element {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Sidebar(): JSX.Element {
     Record<string, boolean>
   >({});
 
-  const { isOpen, toggle, closeSidebar } = useSidebar();
+  const {isOpen, toggle, closeSidebar} = useSidebar();
 
   function isActive(subCategory: SidebarSubCategory) {
     const subCategories = activeCategory.subCategories;
@@ -28,26 +28,26 @@ export default function Sidebar(): JSX.Element {
     const linkedOptions = subCategories
       ? subCategories.filter(
           (linkedOpt: SidebarSubCategory) =>
-            linkedOpt.linkedTo === subCategory.id
+            linkedOpt.linkedTo === subCategory.id,
         )
       : [];
 
     const active =
-      (subCategory.type === "link" &&
+      (subCategory.type === 'link' &&
         new RegExp(
           `^${dashboardPathPrefix}${subCategory.path?.replace(
             /:\w+/g,
-            "\\w+"
+            '\\w+',
           )}$`,
-          "g"
+          'g',
         ).test(location.pathname)) ||
       linkedOptions.some((linkedOpt: SidebarSubCategory) =>
         new RegExp(
-          `^${dashboardPathPrefix}${linkedOpt.path?.replace(/:\w+/g, "\\w+")}$`,
-          "g"
-        ).test(location.pathname)
+          `^${dashboardPathPrefix}${linkedOpt.path?.replace(/:\w+/g, '\\w+')}$`,
+          'g',
+        ).test(location.pathname),
       ) ||
-      (subCategory.type === "accordion" && subCategoriesIsOpen[subCategory.id]);
+      (subCategory.type === 'accordion' && subCategoriesIsOpen[subCategory.id]);
 
     return active;
   }
@@ -55,10 +55,10 @@ export default function Sidebar(): JSX.Element {
   useEffect(() => {
     const activeCategory = sidebar.find((category) => {
       const subCategoriesLink = category.subCategories.filter(
-        (subCategory) => subCategory.type === "link"
+        (subCategory) => subCategory.type === 'link',
       );
       const subCategoriesAccordion = category.subCategories.filter(
-        (subCategory) => subCategory.type === "accordion"
+        (subCategory) => subCategory.type === 'accordion',
       );
 
       if (subCategoriesLink.some((link) => isActive(link))) {
@@ -82,12 +82,12 @@ export default function Sidebar(): JSX.Element {
     const hasSubCategoryActive = activeCategory.subCategories.find(
       (subCategory) => {
         return (
-          subCategory.type === "accordion" &&
+          subCategory.type === 'accordion' &&
           subCategory.childrens &&
           subCategory.childrens.length > 0 &&
           subCategory.childrens.some((subChildren) => isActive(subChildren))
         );
-      }
+      },
     );
 
     if (hasSubCategoryActive) {
@@ -107,9 +107,9 @@ export default function Sidebar(): JSX.Element {
 
   function toggleSubCategoriesIsOpen(id: string) {
     if (subCategoriesIsOpen[id]) {
-      setSubCategoriesIsOpen((state) => ({ ...state, [id]: false }));
+      setSubCategoriesIsOpen((state) => ({...state, [id]: false}));
     } else {
-      setSubCategoriesIsOpen((state) => ({ ...state, [id]: true }));
+      setSubCategoriesIsOpen((state) => ({...state, [id]: true}));
     }
   }
 
@@ -124,7 +124,7 @@ export default function Sidebar(): JSX.Element {
 
     const hasSubCategoryActive = category.subCategories.find((subCategory) => {
       return (
-        subCategory.type === "accordion" &&
+        subCategory.type === 'accordion' &&
         subCategory.childrens &&
         subCategory.childrens.length > 0 &&
         subCategory.childrens.some((subChildren) => isActive(subChildren))
@@ -148,7 +148,7 @@ export default function Sidebar(): JSX.Element {
       <li
         key={category.id}
         className={classNames({
-          "--active": activeCategory.id === category.id,
+          '--active': activeCategory.id === category.id,
         })}
         onClick={() => handleChangeActiveCategory(category)}
       >
@@ -160,18 +160,18 @@ export default function Sidebar(): JSX.Element {
 
   function renderSidebarSubCategories() {
     return activeCategory.subCategories
-      .filter((subCategory) => subCategory.type !== "hidden")
+      .filter((subCategory) => subCategory.type !== 'hidden')
       .map((subCategory) => {
-        const isAccordion = subCategory.type === "accordion";
+        const isAccordion = subCategory.type === 'accordion';
         const isSubCategoryActive = isActive(subCategory);
 
         return (
           <Fragment key={subCategory.id}>
             <li
               className={classNames({
-                "--subcategory": isAccordion,
-                "--link": subCategory.type === "link",
-                "--active": isSubCategoryActive,
+                '--subcategory': isAccordion,
+                '--link': subCategory.type === 'link',
+                '--active': isSubCategoryActive,
               })}
               onClick={() => {
                 if (isAccordion) {
@@ -200,8 +200,8 @@ export default function Sidebar(): JSX.Element {
                         return (
                           <li
                             key={subChildren.id}
-                            className={classNames("--link", {
-                              "--active": isSubChildrenActive,
+                            className={classNames('--link', {
+                              '--active': isSubChildrenActive,
                             })}
                             onClick={() =>
                               subChildren.path &&
@@ -225,7 +225,7 @@ export default function Sidebar(): JSX.Element {
   return (
     <Container>
       <div
-        className={classNames("sidebar-overlay", {
+        className={classNames('sidebar-overlay', {
           show: isOpen,
         })}
         onClick={() => isOpen && toggle()}
@@ -233,7 +233,7 @@ export default function Sidebar(): JSX.Element {
         teste
       </div>
       <div
-        className={classNames("sidebar", {
+        className={classNames('sidebar', {
           open: isOpen,
         })}
       >
@@ -249,7 +249,7 @@ export default function Sidebar(): JSX.Element {
             height={16}
             onClick={toggle}
             className={classNames({
-              "--is-open": isOpen,
+              '--is-open': isOpen,
             })}
           />
         </div>

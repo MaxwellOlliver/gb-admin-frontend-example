@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { BrowserRouter, Routes as Switch, Route } from "react-router-dom";
-import routes from "./routes";
-import PrivateRoute from "./PrivateRoute";
-import SuspenseLoader from "@/components/SuspenseLoader";
+import {Suspense} from 'react';
+import {BrowserRouter, Routes as Switch, Route} from 'react-router-dom';
+import SuspenseLoader from '@/components/SuspenseLoader';
+import PrivateRoute from './PrivateRoute';
+import routes from './routes';
 
 function Routes(): JSX.Element {
   return (
@@ -80,7 +80,7 @@ function Routes(): JSX.Element {
                   />
                 ))}
             </Route>
-          )
+          ),
         )}
       </Switch>
     </BrowserRouter>

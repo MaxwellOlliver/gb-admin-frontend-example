@@ -1,13 +1,13 @@
-import { easeInOutQuartic } from "@/config/customAnimations";
-import styled from "styled-components";
-import { elementsIndex } from "../../config/theme";
+import {easeInOutQuartic} from '@/config/customAnimations';
+import styled from 'styled-components';
+import {elementsIndex} from '../../config/theme';
 
 interface INavbar {
   forceFullscreen?: boolean;
 }
 
 export const Container = styled.div<INavbar>`
-  width: calc(100% - ${({ theme }) => theme.sizes.sidebarWidth});
+  width: calc(100% - ${({theme}) => theme.sizes.sidebarWidth});
   z-index: ${elementsIndex.navbar};
   position: fixed;
   right: 0;
@@ -29,7 +29,7 @@ export const Container = styled.div<INavbar>`
 
     justify-content: space-between;
     padding: 0 1.5rem;
-    font-family: "Rubik", sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
     color: #fff;

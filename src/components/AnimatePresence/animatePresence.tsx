@@ -1,6 +1,6 @@
-import React from "react";
-import { IAnimatePresenceComponentProps } from ".";
-import AnimatePresenceComponent from "./AnimatePresenceComponent";
+import React from 'react';
+import AnimatePresenceComponent from './AnimatePresenceComponent';
+import {IAnimatePresenceComponentProps} from '.';
 
 /**
  * Animates component when mounted. Ideal to animate route components.
@@ -15,9 +15,9 @@ import AnimatePresenceComponent from "./AnimatePresenceComponent";
 
 function animatePresence<T = unknown>(
   AnimationTarget: React.FC<T>,
-  options?: IAnimatePresenceComponentProps["animationOptions"]
+  options?: IAnimatePresenceComponentProps['animationOptions'],
 ) {
-  return function AnimatePresence({ ...props }: T) {
+  return function AnimatePresence({...props}: T) {
     return (
       <AnimatePresenceComponent animationOptions={options}>
         <AnimationTarget {...props} />
@@ -26,4 +26,4 @@ function animatePresence<T = unknown>(
   };
 }
 
-export { animatePresence };
+export {animatePresence};

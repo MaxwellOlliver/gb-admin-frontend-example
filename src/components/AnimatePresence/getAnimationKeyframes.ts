@@ -1,9 +1,9 @@
-import { Keyframes, keyframes } from "styled-components";
-import { Animation } from ".";
+import {Keyframes, keyframes} from 'styled-components';
+import {Animation} from '.';
 
 const getAnimationKeyframes = (animationType: Animation): Keyframes => {
   switch (animationType) {
-    case "slideUp":
+    case 'slideUp':
       return keyframes`
         from {
           opacity: 0;
@@ -13,7 +13,7 @@ const getAnimationKeyframes = (animationType: Animation): Keyframes => {
           transform: translateY(0%);
         }
       `;
-    case "slideDown":
+    case 'slideDown':
       return keyframes`
         from {
           opacity: 0;
@@ -23,7 +23,7 @@ const getAnimationKeyframes = (animationType: Animation): Keyframes => {
           transform: translateY(0%);
         }
       `;
-    case "slideLeft":
+    case 'slideLeft':
       return keyframes`
         from {
           opacity: 0;
@@ -33,7 +33,7 @@ const getAnimationKeyframes = (animationType: Animation): Keyframes => {
           transform: translateX(0%);
         }
       `;
-    case "slideRight":
+    case 'slideRight':
       return keyframes`
         from {
           opacity: 0;
@@ -43,7 +43,7 @@ const getAnimationKeyframes = (animationType: Animation): Keyframes => {
           transform: translateX(0%);
         }
       `;
-    case "scaleIn":
+    case 'scaleIn':
       return keyframes`
         from {
           opacity: 0;
@@ -53,7 +53,7 @@ const getAnimationKeyframes = (animationType: Animation): Keyframes => {
           transform: scale(1);
         }
       `;
-    case "scaleOut":
+    case 'scaleOut':
       return keyframes`
         from {
           opacity: 0;

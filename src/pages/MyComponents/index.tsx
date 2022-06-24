@@ -1,5 +1,14 @@
-import Button from "@/@core/components/Button";
-import Input from "@/@core/components/Input";
+import {Fragment, useState} from 'react';
+import {
+  FiAlertCircle,
+  FiAlertTriangle,
+  FiChevronDown,
+  FiEdit,
+  FiHome,
+  FiPlus,
+} from 'react-icons/fi';
+import Button from '@/@core/components/Button';
+import Input from '@/@core/components/Input';
 import {
   Table,
   TableContainer,
@@ -8,31 +17,21 @@ import {
   Th,
   Thead,
   Tr,
-} from "@/@core/components/Table";
-import animatePresence from "@/components/AnimatePresence";
-import { classNames } from "@/utils/classNames";
-import { Fragment, useState } from "react";
-import {
-  FiAlertCircle,
-  FiAlertTriangle,
-  FiChevronDown,
-  FiEdit,
-  FiHome,
-  FiPenTool,
-  FiPlus,
-} from "react-icons/fi";
-import { Container } from "./styles";
+} from '@/@core/components/Table';
+import animatePresence from '@/components/AnimatePresence';
+import {classNames} from '@/utils/classNames';
+import {Container} from './styles';
 
 function MyComponents() {
   const [accordionIsOpen, setAccordionIsOpen] = useState<Record<any, boolean>>(
-    {}
+    {},
   );
 
   const toggleAccordion = (id: number) => {
     if (accordionIsOpen[id]) {
-      setAccordionIsOpen((state) => ({ ...state, [id]: false }));
+      setAccordionIsOpen((state) => ({...state, [id]: false}));
     } else {
-      setAccordionIsOpen((state) => ({ ...state, [id]: true }));
+      setAccordionIsOpen((state) => ({...state, [id]: true}));
     }
   };
 
@@ -120,7 +119,7 @@ function MyComponents() {
               </Tr>
             </Thead>
             <Tbody>
-              {new Array(5).fill("").map((_, index) => (
+              {new Array(5).fill('').map((_, index) => (
                 <Tr key={index}>
                   <Td>motorista</Td>
                   <Td>motorista</Td>
@@ -144,7 +143,7 @@ function MyComponents() {
               </Tr>
             </Thead>
             <Tbody>
-              {new Array(5).fill("").map((_, index) => (
+              {new Array(5).fill('').map((_, index) => (
                 <Fragment key={index}>
                   <Tr isActive={accordionIsOpen[index]}>
                     <Td>motorista</Td>
@@ -154,8 +153,8 @@ function MyComponents() {
                       <FiChevronDown
                         size={20}
                         onClick={() => toggleAccordion(index)}
-                        className={classNames("table__edit-toggle", {
-                          "--active": accordionIsOpen[index],
+                        className={classNames('table__edit-toggle', {
+                          '--active': accordionIsOpen[index],
                         })}
                       />
                     </Td>
@@ -182,5 +181,5 @@ function MyComponents() {
 }
 
 export default animatePresence(MyComponents, {
-  animationType: "onlyFadeIn",
+  animationType: 'onlyFadeIn',
 });

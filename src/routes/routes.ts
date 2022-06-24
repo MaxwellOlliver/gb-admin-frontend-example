@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import {lazy} from 'react';
 
 export interface RouteConfig {
   element: React.FC<any>;
@@ -6,20 +6,20 @@ export interface RouteConfig {
   isIndex?: boolean;
   useSuspenseLoader?: boolean;
   path?: string;
-  childrens?: Omit<RouteConfig, "isPrivate">[];
+  childrens?: Omit<RouteConfig, 'isPrivate'>[];
 }
 
-export const dashboardPathPrefix = "/dashboard";
+export const dashboardPathPrefix = '/dashboard';
 
 const routes: RouteConfig[] = [
   {
     isIndex: true,
-    element: lazy(() => import("@/pages/Home")),
+    element: lazy(() => import('@/pages/Home')),
     isPrivate: false,
   },
   {
-    path: "dashboard",
-    element: lazy(() => import("@/pages/Dashboard")),
+    path: 'dashboard',
+    element: lazy(() => import('@/pages/Dashboard')),
     useSuspenseLoader: true,
     childrens: [
       // {
@@ -27,16 +27,16 @@ const routes: RouteConfig[] = [
       //   element: lazy(() => import("@/pages/Panel")),
       // },
       {
-        path: "components",
-        element: lazy(() => import("@/pages/MyComponents")),
+        path: 'components',
+        element: lazy(() => import('@/pages/MyComponents')),
       },
       {
-        path: "user",
-        element: lazy(() => import("@/pages/User")),
+        path: 'user',
+        element: lazy(() => import('@/pages/User')),
       },
       {
-        path: "products",
-        element: lazy(() => import("@/pages/Products")),
+        path: 'products',
+        element: lazy(() => import('@/pages/Products')),
       },
     ],
   },

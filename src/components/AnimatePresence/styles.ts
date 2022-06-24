@@ -1,11 +1,11 @@
-import styled, { Keyframes } from "styled-components";
-import { IAnimatePresenceComponentProps } from ".";
+import styled, {Keyframes} from 'styled-components';
+import {IAnimatePresenceComponentProps} from '.';
 
 type IAnimationPresenceContainerProps = Omit<
-  Required<IAnimatePresenceComponentProps["animationOptions"]> & {
+  Required<IAnimatePresenceComponentProps['animationOptions']> & {
     animationKeyframes: Keyframes;
   },
-  "animationType"
+  'animationType'
 >;
 
 export const Container = styled.div<IAnimationPresenceContainerProps>`

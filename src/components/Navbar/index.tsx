@@ -1,9 +1,9 @@
-import { FiChevronDown, FiSearch } from "react-icons/fi";
-import { MdNotificationsNone } from "react-icons/md";
-import { RiChat1Line } from "react-icons/ri";
+import {FiChevronDown, FiSearch} from 'react-icons/fi';
+import {MdNotificationsNone} from 'react-icons/md';
+import {RiChat1Line} from 'react-icons/ri';
 
-import { Container } from "./styles";
-import Avatar from "@/@core/components/Avatar";
+import Avatar from '@/@core/components/Avatar';
+import {Container} from './styles';
 
 export default function Navbar(): JSX.Element {
   return (

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import {useLayoutEffect, useState} from 'react';
 
 interface IUseResize {
   width: number;
@@ -15,10 +15,10 @@ export default function useResize(): IUseResize {
       setHeight(window.innerHeight);
     };
 
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
 
-    return () => window.removeEventListener("resize", updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  return { height, width };
+  return {height, width};
 }

@@ -1,27 +1,27 @@
-import { animatePresence } from "./animatePresence";
-import AnimatePresenceComponent from "./AnimatePresenceComponent";
-import getAnimationKeyframes from "./getAnimationKeyframes";
+import {animatePresence} from './animatePresence';
+import AnimatePresenceComponent from './AnimatePresenceComponent';
+import getAnimationKeyframes from './getAnimationKeyframes';
 
-enum AnimationTypes {
-  "slideLeft",
-  "slideRight",
-  "slideDown",
-  "slideUp",
-  "scaleIn",
-  "scaleOut",
-  "onlyFadeIn",
+export enum AnimationTypes {
+  'slideLeft',
+  'slideRight',
+  'slideDown',
+  'slideUp',
+  'scaleIn',
+  'scaleOut',
+  'onlyFadeIn',
 }
 
-type Animation = keyof typeof AnimationTypes;
+export type Animation = keyof typeof AnimationTypes;
 
-type AnimationTimingFunction =
-  | "linear"
-  | "ease"
-  | "ease-in"
-  | "ease-out"
-  | "ease-in-out";
+export type AnimationTimingFunction =
+  | 'linear'
+  | 'ease'
+  | 'ease-in'
+  | 'ease-out'
+  | 'ease-in-out';
 
-interface IAnimatePresenceComponentProps {
+export interface IAnimatePresenceComponentProps {
   className?: string;
   animationOptions?: {
     animationType?: Animation;
@@ -30,17 +30,6 @@ interface IAnimatePresenceComponentProps {
   };
 }
 
-export {
-  animatePresence,
-  AnimationTypes,
-  AnimatePresenceComponent,
-  getAnimationKeyframes,
-};
-
-export type {
-  IAnimatePresenceComponentProps,
-  Animation,
-  AnimationTimingFunction,
-};
+export {animatePresence, AnimatePresenceComponent, getAnimationKeyframes};
 
 export default animatePresence;

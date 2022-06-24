@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { SidebarContext } from "@/context/Sidebar";
+import {useContext} from 'react';
+import {SidebarContext} from '@/context/Sidebar';
 
 interface IUseSidebar {
   toggle: () => void;
@@ -8,7 +8,7 @@ interface IUseSidebar {
 }
 
 export default function useSidebar(): IUseSidebar {
-  const { toggle, isOpen, closeSidebar } = useContext(SidebarContext);
+  const {toggle, isOpen, closeSidebar} = useContext(SidebarContext);
 
-  return { toggle, isOpen, closeSidebar };
+  return {toggle, isOpen, closeSidebar};
 }

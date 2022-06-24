@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import { getAnimationKeyframes, IAnimatePresenceComponentProps } from ".";
-import { Container } from "./styles";
+import {PropsWithChildren} from 'react';
+import {Container} from './styles';
+import {getAnimationKeyframes, IAnimatePresenceComponentProps} from '.';
 
 function AnimatePresenceComponent({
   children,
@@ -8,9 +8,9 @@ function AnimatePresenceComponent({
   animationOptions,
 }: PropsWithChildren<IAnimatePresenceComponentProps>): JSX.Element {
   const {
-    animationType = "onlyFadeIn",
-    animationTimingFunction = "ease",
-    animationDuration = "0.2s",
+    animationType = 'onlyFadeIn',
+    animationTimingFunction = 'ease',
+    animationDuration = '0.2s',
   } = animationOptions || {};
 
   return (

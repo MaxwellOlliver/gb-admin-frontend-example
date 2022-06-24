@@ -1,9 +1,9 @@
-import { ThemeProvider } from "styled-components";
-import { theme } from "@/config/theme";
-import Routes from "@/routes";
-import GlobalStyles from "./global/globalStyles";
-import GlobalFonts from "./global/globalFonts";
-import { SidebarProvider } from "./context/Sidebar";
+import {theme} from '@/config/theme';
+import Routes from '@/routes';
+import {ThemeProvider} from 'styled-components';
+import {SidebarProvider} from './context/Sidebar';
+import GlobalFonts from './global/globalFonts';
+import GlobalStyles from './global/globalStyles';
 
 function App() {
   return (

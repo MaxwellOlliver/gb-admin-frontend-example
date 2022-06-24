@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from 'react';
 
 function useDisclosure() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ function useDisclosure() {
     setIsOpen((state) => !state);
   }
 
-  return { isOpen, close, toggle };
+  return {isOpen, close, toggle};
 }
 
 export default useDisclosure;

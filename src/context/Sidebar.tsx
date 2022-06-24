@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from "react";
-import useResize from "@/hooks/useResize";
+import {createContext, useEffect, useState} from 'react';
+import useResize from '@/hooks/useResize';
 
 export const SidebarContext = createContext({
   isOpen: false,
-  toggle: () => console.warn("sidebar context not provided"),
-  closeSidebar: () => console.warn("sidebar context not provided"),
+  toggle: () => console.warn('sidebar context not provided'),
+  closeSidebar: () => console.warn('sidebar context not provided'),
 });
 
 export function SidebarProvider({
@@ -13,7 +13,7 @@ export function SidebarProvider({
   children: JSX.Element;
 }): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
-  const { width } = useResize();
+  const {width} = useResize();
 
   useEffect(() => {
     if (width > 1199 && isOpen) {
@@ -26,7 +26,7 @@ export function SidebarProvider({
   const closeSidebar = () => setIsOpen(false);
 
   return (
-    <SidebarContext.Provider value={{ isOpen, toggle, closeSidebar }}>
+    <SidebarContext.Provider value={{isOpen, toggle, closeSidebar}}>
       {children}
     </SidebarContext.Provider>
   );

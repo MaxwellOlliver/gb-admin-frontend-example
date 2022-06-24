@@ -1,6 +1,6 @@
-import { easeInOutQuartic } from "@/config/customAnimations";
-import styled from "styled-components";
-import { elementsIndex } from "../../config/theme";
+import {easeInOutQuartic} from '@/config/customAnimations';
+import styled from 'styled-components';
+import {elementsIndex} from '../../config/theme';
 
 interface ISidebar {
   forceFullscreen?: boolean;
